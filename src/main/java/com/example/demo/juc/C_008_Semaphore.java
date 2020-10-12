@@ -10,8 +10,10 @@ import java.util.concurrent.TimeUnit;
  * 允许n个线程同时执行
  *
  * 应用场景：限流
+ *
+ * @author User
  */
-public class C_008 {
+public class C_008_Semaphore {
 
     static Semaphore semaphore = new Semaphore(2);
 

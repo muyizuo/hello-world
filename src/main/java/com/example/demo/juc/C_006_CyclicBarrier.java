@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  *
  * 以下是一个模拟公交车发车的例子
  */
-public class C_006 {
+public class C_006_CyclicBarrier {
 
     // 乘客数量
     private static final int num = 50;

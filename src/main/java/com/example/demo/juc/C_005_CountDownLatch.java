@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  *
  * 类似join()
  */
-public class C_005 {
+public class C_005_CountDownLatch {
 
     // 倒计数器
     private static final CountDownLatch countDownLatch = new CountDownLatch(50);

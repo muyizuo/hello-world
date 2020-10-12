@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
  *
  * 多个线程按阶段执行，当一个阶段的所有线程全部执行完毕，再执行下一个阶段
  */
-public class C_007 extends Phaser {
+public class C_007_Phaser extends Phaser {
 
-    /*public C_007(int i) {
+    /*public C_007_Phaser(int i) {
         super(i);
     }*/
 
@@ -38,7 +38,7 @@ public class C_007 extends Phaser {
         }
     }
 
-    static C_007 c = new C_007();
+    static C_007_Phaser c = new C_007_Phaser();
 
     public static void main(String[] args) throws Exception {
         c.bulkRegister(12); // 增加注册线程的数量

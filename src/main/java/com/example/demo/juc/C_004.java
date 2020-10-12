@@ -27,7 +27,9 @@ public class C_004 {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                c_004.m1();
+                while (true) {
+                    c_004.m1();
+                }
             }
         };
         new Thread(runnable, "线程1").start();
