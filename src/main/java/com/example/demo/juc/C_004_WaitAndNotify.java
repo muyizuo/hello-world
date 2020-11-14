@@ -47,9 +47,8 @@ public class C_004_WaitAndNotify {
 
         Thread t2 = new Thread(c_004::m3, "线程2");
 
-        t2.start();
-
         t1.start();
+        t2.start();
 
         /*try {
             TimeUnit.SECONDS.sleep(3);

@@ -41,13 +41,12 @@
             <version>4.5.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.1.2</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
         </dependency>
-
 
     </dependencies>
 

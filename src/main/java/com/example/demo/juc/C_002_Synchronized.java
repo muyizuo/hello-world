@@ -4,7 +4,7 @@ package com.example.demo.juc;
  * 模拟抢票（秒杀）
  * synchronized关键字
  */
-public class C_002 {
+public class C_002_Synchronized {
 
     // 票数
     private int ticket = 15;
@@ -28,7 +28,7 @@ public class C_002 {
 
     public static void main(String[] args) {
         // 模拟20人抢10张票
-        C_002 c_002 = new C_002();
+        C_002_Synchronized c_002 = new C_002_Synchronized();
         for (int i = 0; i < num; i++) {
             new Thread(new Runnable() {
                 @Override

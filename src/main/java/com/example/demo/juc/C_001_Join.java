@@ -4,13 +4,13 @@ package com.example.demo.juc;
  * join()可保证线程的执行顺序
  *
  */
-public class C_001 {
+public class C_001_Join {
 
     private static int value;
 
     public static void main(String[] args) throws Exception {
         Thread t1 = new Thread(() -> {
-            C_001.m1();
+            C_001_Join.m1();
             System.out.println(Thread.currentThread().getName());
         }, "线程01");
 
@@ -20,7 +20,7 @@ public class C_001 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            C_001.m1();
+            C_001_Join.m1();
             System.out.println(Thread.currentThread().getName());
         }, "线程02");
 

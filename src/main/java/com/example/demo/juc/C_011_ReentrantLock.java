@@ -1,6 +1,7 @@
 package com.example.demo.juc;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -10,6 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 2.ReentrantLock默认为非公平锁，可以使用new ReentrantLock(true)创建公平锁。另外synchronized是非公平锁。非公平锁往往效率更高！
  * 3.ReentrantLock可以尝试锁定tryLock，可指定超时时间，指定时间内获取不到锁则继续向下执行
  * 4.可中断锁 lockInterruptibly()
+ * 5.可以绑定多个条件 Condition
  */
 public class C_011_ReentrantLock {
 
