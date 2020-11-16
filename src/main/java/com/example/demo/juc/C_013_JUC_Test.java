@@ -28,10 +28,11 @@ public class C_013_JUC_Test {
         Object lock = new Object();
 
         Thread t1 = new Thread(() -> {
+            sleep(1);
+
             synchronized (lock) {
                 System.out.println(Thread.currentThread().getName() + " start！");
                 for (int i = 0; i < 10; i++) {
-                    sleep(1);
                     System.out.println("add " + i);
                     c.add(i);
 
