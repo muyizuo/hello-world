@@ -14,11 +14,32 @@ import com.alibaba.fastjson.JSONObject;
 public class C_005_ActiveMq_Test {
 
     private static final String PRODUCER_QUEUE_NAME = "EBankSpider_yz";
-    private static final String CONSUMER_QUEUE_NAME = "paladin-ipo-sh";
+    private static final String CONSUMER_QUEUE_NAME1 = "paladin-ipo-sh";
+    private static final String CONSUMER_QUEUE_NAME2 = "paladin-ipo-sz";
 
     public static void main(String[] args) throws JMSException {
-        C_004_ActiveMq_Consumer consumer = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME);
-        consumer.getConsumer().setMessageListener(message -> {
+        // 模拟上交所机器人
+        C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME1);
+        consumer1.getConsumer().setMessageListener(message -> {
+            MapMessage mapMessage = (MapMessage) message;
+            try {
+                String uploadJson = mapMessage.getString("uploadJson");
+                System.out.println(uploadJson);
+                JSONObject object = JSONObject.parseObject(uploadJson);
+                String key = object.keySet().stream().findFirst().get();
+                String market = object.getJSONObject(key).getString("market");
+
+                TimeUnit.SECONDS.sleep(3);
+
+                C_003_ActiveMq_Producer producer = new C_003_ActiveMq_Producer(PRODUCER_QUEUE_NAME);
+                producer.produce(getMessageMap(key, market));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        // 模拟深交所机器人
+        C_004_ActiveMq_Consumer consumer2 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME2);
+        consumer2.getConsumer().setMessageListener(message -> {
             MapMessage mapMessage = (MapMessage) message;
             try {
                 String uploadJson = mapMessage.getString("uploadJson");
