@@ -3,6 +3,7 @@ package com.example.demo.messagequeue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import javax.jms.JMSException;
@@ -19,7 +20,7 @@ public class C_005_ActiveMq_Test {
 
     public static void main(String[] args) throws JMSException {
         // 模拟上交所机器人
-        C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME1);
+        /*C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME1);
         consumer1.getConsumer().setMessageListener(message -> {
             MapMessage mapMessage = (MapMessage) message;
             try {
@@ -36,9 +37,9 @@ public class C_005_ActiveMq_Test {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
+        });*/
         // 模拟深交所机器人
-        C_004_ActiveMq_Consumer consumer2 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME2);
+        /*C_004_ActiveMq_Consumer consumer2 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME2);
         consumer2.getConsumer().setMessageListener(message -> {
             MapMessage mapMessage = (MapMessage) message;
             try {
@@ -55,9 +56,16 @@ public class C_005_ActiveMq_Test {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
-        /*C_003_ActiveMq_Producer producer = new C_003_ActiveMq_Producer(CONSUMER_QUEUE_NAME);
-        producer.produce(testReport());*/
+        });*/
+        C_003_ActiveMq_Producer producer = new C_003_ActiveMq_Producer(PRODUCER_QUEUE_NAME);
+        while(true) {
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            producer.produce(getMessageMap("TRACK_ROBOT_LOG", "SH"));
+        }
     }
 
     private static Map<String, String> getMessageMap(String key, String market) {
@@ -72,6 +80,12 @@ public class C_005_ActiveMq_Test {
                 map.put("type", key);
                 map.put("market", market);
                 map.put("status", "ok");
+                break;
+            case "TRACK_ROBOT_LOG":
+                map.put("type", key);
+                map.put("market", market);
+                map.put("bizType", "0");
+                map.put("log", "上报进度检测" + UUID.randomUUID().toString());
                 break;
         }
         return map;
