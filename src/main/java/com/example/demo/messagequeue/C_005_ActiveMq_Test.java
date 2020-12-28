@@ -1,9 +1,8 @@
 package com.example.demo.messagequeue;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import javax.jms.JMSException;
@@ -18,8 +17,10 @@ public class C_005_ActiveMq_Test {
     private static final String CONSUMER_QUEUE_NAME1 = "paladin-ipo-sh";
     private static final String CONSUMER_QUEUE_NAME2 = "paladin-ipo-sz";
 
+    private static final String BATCH_NO = UUID.randomUUID().toString();
+
     public static void main(String[] args) throws JMSException {
-        // 模拟上交所机器人
+        // 模拟上交所机器人 接收消息并回复
         /*C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME1);
         consumer1.getConsumer().setMessageListener(message -> {
             MapMessage mapMessage = (MapMessage) message;
@@ -38,7 +39,7 @@ public class C_005_ActiveMq_Test {
                 e.printStackTrace();
             }
         });*/
-        // 模拟深交所机器人
+        // 模拟深交所机器人 接收消息并回复
         /*C_004_ActiveMq_Consumer consumer2 = new C_004_ActiveMq_Consumer(CONSUMER_QUEUE_NAME2);
         consumer2.getConsumer().setMessageListener(message -> {
             MapMessage mapMessage = (MapMessage) message;
@@ -57,35 +58,56 @@ public class C_005_ActiveMq_Test {
                 e.printStackTrace();
             }
         });*/
+        // 模拟机器人 直接发送消息
         C_003_ActiveMq_Producer producer = new C_003_ActiveMq_Producer(PRODUCER_QUEUE_NAME);
-        while(true) {
+        int i = 0;
+        while(i <= 50) {
+            i++;
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.MILLISECONDS.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             producer.produce(getMessageMap("TRACK_ROBOT_LOG", "SH"));
         }
+        // 模拟帕拉丁 接收消息
+        /*C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(PRODUCER_QUEUE_NAME);
+        consumer1.getConsumer().setMessageListener(message -> {
+            MapMessage mapMessage = (MapMessage) message;
+            try {
+                System.out.println(mapMessage.getString("logTime") + " " + mapMessage.getString("logInfo"));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });*/
     }
 
     private static Map<String, String> getMessageMap(String key, String market) {
         Map<String, String> map = new HashMap<>();
         switch (key) {
-            case "TEST_MQ":
-                map.put("type", key);
-                map.put("market", market);
-                map.put("mongoStatus", "true");
-                break;
             case "TEST_HEARTBEAT":
                 map.put("type", key);
                 map.put("market", market);
-                map.put("status", "ok");
+                map.put("mongoStatus", "true");
+                map.put("sharkDiskStatus", "true");
                 break;
             case "TRACK_ROBOT_LOG":
                 map.put("type", key);
+                map.put("batchNo", BATCH_NO);
                 map.put("market", market);
                 map.put("bizType", "0");
-                map.put("log", "上报进度检测" + UUID.randomUUID().toString());
+                map.put("secCode", "123456");
+                map.put("logTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
+                map.put("logInfo", "日志" + UUID.randomUUID().toString());
+                map.put("success", "true");
+                break;
+            case "REPORT_STATUS":
+                map.put("type", key);
+                map.put("market", market);
+                map.put("secCode", "605009");
+                map.put("reportStatus", "9");
+                map.put("reportType", "0");
                 break;
         }
         return map;

@@ -1,5 +1,7 @@
 package com.example.demo.base;
 
+import org.springframework.data.mongodb.util.BsonUtils;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +25,9 @@ public class C_001_Map {
                 @Override
                 public void run() {
                     map.put(UUID.randomUUID().toString(), "");
+
                 }
+
             }).start();
         }
     }
