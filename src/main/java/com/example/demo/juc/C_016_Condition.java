@@ -15,6 +15,9 @@ public class C_016_Condition {
     private static ReentrantLock lock = new ReentrantLock();
 
     private static Condition condition = lock.newCondition();
+    private static Condition condition2 = lock.newCondition();
+    private static Condition condition3 = lock.newCondition();
+    private static Condition condition4 = lock.newCondition();
 
     public static void main(String[] args) {
         new Thread(() -> {
@@ -45,7 +48,7 @@ public class C_016_Condition {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                lock.unlock();
+                lock.unlock();// 释放锁
             }
             System.out.println(Thread.currentThread().getName() + " end!");
         }, "线程2").start();
