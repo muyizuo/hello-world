@@ -23,7 +23,7 @@ public class C_002_Guava_Cache {
             .expireAfterWrite(5, TimeUnit.SECONDS)
             // 设置缓存的移除通知
             .removalListener(removalNotification -> {
-                System.out.println("询价/申购上报缓存[" + removalNotification.getKey() + "]已移除！");
+                System.out.println("缓存[" + removalNotification.getKey() + "]已移除！");
                 System.out.println("原因：" + removalNotification.getCause());
             })
             .build();
