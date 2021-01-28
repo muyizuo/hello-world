@@ -7,5 +7,4 @@ package com.example.demo.mongo;
  */
 public class C_002_MongoDb {
 
-    
 }

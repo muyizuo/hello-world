@@ -60,7 +60,8 @@ public class C_005_ActiveMq_Test {
         });*/
         // 模拟机器人 直接发送消息
         C_003_ActiveMq_Producer producer = new C_003_ActiveMq_Producer(PRODUCER_QUEUE_NAME);
-        int i = 0;
+        producer.produce(getMessageMap("TJBG_SH", "SH"));
+        /*int i = 0;
         while(i <= 50) {
             i++;
             try {
@@ -69,7 +70,7 @@ public class C_005_ActiveMq_Test {
                 e.printStackTrace();
             }
             producer.produce(getMessageMap("TRACK_ROBOT_LOG", "SH"));
-        }
+        }*/
         // 模拟帕拉丁 接收消息
         /*C_004_ActiveMq_Consumer consumer1 = new C_004_ActiveMq_Consumer(PRODUCER_QUEUE_NAME);
         consumer1.getConsumer().setMessageListener(message -> {
@@ -108,6 +109,13 @@ public class C_005_ActiveMq_Test {
                 map.put("secCode", "605009");
                 map.put("reportStatus", "9");
                 map.put("reportType", "0");
+                break;
+            case "TJBG_SH":
+                map.put("fileType", "TJBG_SH");
+                map.put("market", market);
+                map.put("fileUrl", "D:\\shareDisk\\688185投资价值报告.pdf");
+                map.put("secCode", "688185");
+                map.put("batchNo", "999999999");
                 break;
         }
         return map;

@@ -1,9 +1,6 @@
 package com.example.demo.newtime;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.Date;
 
 public class C_001 {
@@ -21,8 +18,10 @@ public class C_001 {
         Instant parse = Instant.parse("2020-09-15T01:58:38.261Z");
         System.out.println(parse);
         // 不带时区的日期
-        System.out.println(LocalDate.now());
-        System.out.println(LocalTime.now());
-        System.out.println(LocalDateTime.now());
+        System.out.println(LocalDate.now()); // 2021-01-25
+        System.out.println(LocalTime.now()); // 10:32:27.717
+        System.out.println(LocalDateTime.now()); // 2021-01-25T10:32:27.717
+        System.out.println(Year.now()); // 2021
+        System.out.println(YearMonth.now()); // 2021-01
     }
 }
