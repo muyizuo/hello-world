@@ -1,6 +1,7 @@
 package com.example.demo.newtime;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class C_001 {
@@ -23,5 +24,15 @@ public class C_001 {
         System.out.println(LocalDateTime.now()); // 2021-01-25T10:32:27.717
         System.out.println(Year.now()); // 2021
         System.out.println(YearMonth.now()); // 2021-01
+        // 日期时间格式化
+        // 时间转字符串
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String format = dateTimeFormatter.format(LocalDateTime.now());
+        System.out.println(format); // 2021/01/29 10:51:15
+        // 字符串转时间
+        LocalDateTime parse1 = LocalDateTime.parse("2021/01/29 10:51:15", dateTimeFormatter);
+        LocalDateTime parse2 = LocalDateTime.parse("2021-01-29T10:51:15.111");
+        System.out.println(parse1);
+        System.out.println(parse2);
     }
 }
