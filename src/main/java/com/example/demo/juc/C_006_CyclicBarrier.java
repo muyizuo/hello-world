@@ -22,7 +22,7 @@ public class C_006_CyclicBarrier {
     public static void main(String[] args) throws Exception {
 
         for(int i = 1; i <= num; i++) {
-            // TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(100);
             new Thread(()->{
                 try {
                     TimeUnit.SECONDS.sleep(1);
