@@ -14,10 +14,12 @@ public class C_017_Yield {
 
     public static void main(String[] args) {
         Runnable runnable = () -> {
-            for (int i = 0; i < 100; i++) {
-                System.out.println(Thread.currentThread().getName() + "：" + i);
-                if (i == 10) {
-                    Thread.yield();
+            synchronized (C_017_Yield.class) {
+                for (int i = 1; i <= 10; i++) {
+                    System.out.println(Thread.currentThread().getName() + "：" + i);
+                    if (i == 5) {
+                        Thread.yield(); // 不会释放锁
+                    }
                 }
             }
         };
