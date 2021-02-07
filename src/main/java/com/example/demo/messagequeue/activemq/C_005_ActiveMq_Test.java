@@ -1,13 +1,9 @@
-package com.example.demo.messagequeue;
+package com.example.demo.messagequeue.activemq;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 import javax.jms.JMSException;
-import javax.jms.MapMessage;
-import javax.jms.MessageProducer;
 
 import com.alibaba.fastjson.JSONObject;
 

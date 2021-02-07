@@ -1,4 +1,4 @@
-package com.example.demo.messagequeue;
+package com.example.demo.messagequeue.activemq;
 
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
