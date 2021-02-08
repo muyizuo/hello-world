@@ -29,11 +29,11 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  */
 public class C_001_ActiveMq {
 
-    private static final String ACTIVEMQ_URL = "tcp://192.168.72.93:61616";
+    private static final String ACTIVEMQ_URL = "tcp://127.0.0.1:61616";
 
-    private static final String USER_NAME = "activemq1";
+    private static final String USERNAME = "zhangsan";
 
-    private static final String PASSWORD = "activemq1";
+    private static final String PASSWORD = "123";
 
     private static final String QUEUE_NAME = "AmyQueue";
 
@@ -52,7 +52,7 @@ public class C_001_ActiveMq {
         // 创建连接工厂
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
         // 创建连接
-        Connection connection = activeMQConnectionFactory.createConnection(USER_NAME, PASSWORD);
+        Connection connection = activeMQConnectionFactory.createConnection(USERNAME, PASSWORD);
         // 打开连接
         connection.start();
         // 创建会话
@@ -83,7 +83,7 @@ public class C_001_ActiveMq {
         // 创建连接工厂
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
         // 创建连接
-        Connection connection = activeMQConnectionFactory.createConnection(USER_NAME, PASSWORD);
+        Connection connection = activeMQConnectionFactory.createConnection(USERNAME, PASSWORD);
         // 打开连接
         connection.start();
         // 创建会话
