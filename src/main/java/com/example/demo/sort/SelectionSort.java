@@ -20,12 +20,12 @@ package com.example.demo.sort;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        int[] arr = {8, 2, 5, 7, 1, 6, 4, 3};
-        System.out.print("原数组：");
-        printArr(arr);
+        int[] arr = {8, 2, 5, 7, 1, 6, 4, 3, 9};
 
         // sort1(arr);
         sort2(arr);
+
+        printArr(arr);
     }
 
     /**
@@ -35,7 +35,7 @@ public class SelectionSort {
      *
      * @param arr
      */
-    public static void sort1(int[] arr) {
+    public static void sort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             // 初始化最小值的索引
             int minIndex = i;
@@ -60,7 +60,7 @@ public class SelectionSort {
      *
      * @param arr
      */
-    private static void sort2(int[] arr) {
+    public static void sort2(int[] arr) {
         for (int i = 0; i < arr.length / 2; i++) {
             // 初始化最小值的索引
             int minIndex = i;
@@ -85,8 +85,8 @@ public class SelectionSort {
             swap(arr, arr.length - 1 - i, maxIndex);
 
             // 打印中间结果
-            System.out.print("经过第" + (i + 1) + "次排序操作后数组的元素：");
-            printArr(arr);
+            // System.out.print("经过第" + (i + 1) + "次排序操作后数组的元素：");
+            // printArr(arr);
         }
     }
 
