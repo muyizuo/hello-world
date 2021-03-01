@@ -35,6 +35,9 @@ public class InsertionSort {
             for (int j = i; j > 0; j--) {
                 if (arr[j] < arr[j - 1]) {
                     swap(arr, j, j - 1);
+                } else {
+                    // 左边数值从小到大，则一次比较失败，前面的数无需再比较
+                    break;
                 }
             }
         }
@@ -50,17 +53,17 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             // 把小的值往前放
             int temp = arr[i];
-            int index = i;
-            for (int j = i; j > 0; j--) {
-                /*if (arr[j] < arr[j - 1]) {
-                    swap(arr, j, j - 1);
-                }*/
-                if (arr[j] < arr[j - 1]) {
+            int j = i;
+            for (; j > 0; j--) {
+                if (temp < arr[j - 1]) {
                     arr[j] = arr[j - 1];
-                    index = j - 1;
+                } else {
+                    break;
                 }
             }
-            arr[index] = temp;
+            if (i != j) {
+                arr[j] = temp;
+            }
         }
     }
 
