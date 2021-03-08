@@ -18,33 +18,22 @@ public class C_003 {
     private static final Map CACHE = new ConcurrentHashMap();
 
     public static void main(String[] args) {
-        // ExecutorService service = Executors.newFixedThreadPool(2);
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2,
-                0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>());
-        executor.submit(() -> {
+        new Thread(() -> {
             try {
-                TimeUnit.SECONDS.sleep(3);
-                CACHE.put("123", "456");
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        });
-        Future<Object> future = executor.submit(() -> {
-            Object o = null;
-            while (o == null) {
-                o = CACHE.get("123");
-            }
-            return o;
-        });
-        try {
-            Object o = future.get(5, TimeUnit.SECONDS);
-            System.out.println(Objects.toString(o));
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("获取失败！");
+            CACHE.put("123", "ABCD");
+        }).start();
+
+        long start = System.currentTimeMillis();
+        System.out.println(start);
+        Object o = null;
+        while (System.currentTimeMillis() - start < 10000) {
+            o = CACHE.get("123");
         }
-        executor.shutdown();
-        System.out.println("主线程执行完毕！");
+        System.out.println(System.currentTimeMillis());
+        System.out.println(o);
     }
 }
