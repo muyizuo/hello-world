@@ -45,6 +45,8 @@ public class DataChecker {
         // SelectionSort.sort2(arrCopy);
         // BubbleSort.sort(arrCopy);
         // BubbleSort.sort2(arrCopy);
+        // InsertionSort.sort(arrCopy);
+        // InsertionSort.sort2(arrCopy);
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != arrCopy[i]) {

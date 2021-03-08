@@ -28,7 +28,7 @@ public class InsertionSort {
      *
      * @param arr
      */
-    private static void sort(int[] arr) {
+    static void sort(int[] arr) {
         // 从第二个位置开始，直到最后一个位置
         for (int i = 1; i < arr.length; i++) {
             // 把小的值往前放
@@ -48,7 +48,7 @@ public class InsertionSort {
      *
      * @param arr
      */
-    private static void sort2(int[] arr) {
+    static void sort2(int[] arr) {
         // 从第二个位置开始，直到最后一个位置
         for (int i = 1; i < arr.length; i++) {
             // 把小的值往前放

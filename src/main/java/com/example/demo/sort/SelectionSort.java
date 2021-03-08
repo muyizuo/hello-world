@@ -35,7 +35,7 @@ public class SelectionSort {
      *
      * @param arr
      */
-    public static void sort(int[] arr) {
+    static void sort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             // 初始化最小值的索引
             int minIndex = i;
@@ -60,7 +60,7 @@ public class SelectionSort {
      *
      * @param arr
      */
-    public static void sort2(int[] arr) {
+    static void sort2(int[] arr) {
         for (int i = 0; i < arr.length / 2; i++) {
             // 初始化最小值的索引
             int minIndex = i;
