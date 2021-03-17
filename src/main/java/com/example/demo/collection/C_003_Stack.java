@@ -1,8 +1,8 @@
-package com.example.demo.base;
+package com.example.demo.collection;
 
 import java.util.Stack;
 
-public class C_024_KH {
+public class C_003_Stack {
 
     public static void main(String[] args) {
         // 栈
@@ -21,12 +21,5 @@ public class C_024_KH {
         // 查看指定元素位置 -1表示不存在
         System.out.println(stack.search(5));
         System.out.println(stack.search(2));
-
-        /*String s = "()[]{}";
-        Stack<Character> stk = new Stack();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-
-        }*/
     }
 }
