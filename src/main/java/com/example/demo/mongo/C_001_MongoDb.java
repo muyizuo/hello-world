@@ -27,7 +27,7 @@ public class C_001_MongoDb {
     private static final String COLLECTION_NAME = "IPO_MONITOR_LOG";
 
     public static void main(String[] args) {
-        loginWithPsw();
+        // loginWithPsw();
         // loginNoPsw();
     }
 
